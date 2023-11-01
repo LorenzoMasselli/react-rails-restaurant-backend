@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2023-11-01 14:47:54
+  time: 2023-11-01 14:47:54
+  quantity: 1
+  name: MyString
+  phone: MyString
+  email: MyString
+  confirmed: false
+
+two:
+  date: 2023-11-01 14:47:54
+  time: 2023-11-01 14:47:54
+  quantity: 1
+  name: MyString
+  phone: MyString
+  email: MyString
+  confirmed: false
