@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_144753) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_02_201110) do
   create_table "bookings", force: :cascade do |t|
-    t.datetime "date"
-    t.datetime "time"
+    t.text "date"
+    t.text "time"
     t.integer "quantity"
     t.string "name"
     t.string "phone"
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_144753) do
     t.boolean "confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "note"
   end
 
 end

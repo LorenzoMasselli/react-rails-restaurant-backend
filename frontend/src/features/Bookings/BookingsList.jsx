@@ -1,7 +1,7 @@
 // API comes from .env.development file 
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
-import './BookingsList.css'
+import './Bookings.css'
 
 function BookingsList() {
     const [bookings, setBookings] = useState([]);
@@ -28,12 +28,12 @@ function BookingsList() {
         loadBookings()
     }, [])
     return (
-        <div>
+        <div className='booking-container'>
             {bookings.map((booking) => (
-                <div key={booking.id} className='booking-container'>
-                    <h2>{booking.name}</h2>
-                    <h2>{booking.quantity} people</h2>
-                    <h3>{booking.email}</h3>
+                <div key={booking.id} className='bookings-list'>
+                    <h2>Name: {booking.name}</h2>
+                    <h2>Number of guests: {booking.quantity}</h2>
+                    <h3>Email: {booking.email}</h3>
                 </div>
             ))}
         </div>
