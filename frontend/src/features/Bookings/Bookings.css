@@ -16,14 +16,14 @@
     padding: 30px;
     margin: 30px;
     border-radius: 12px;
-    color: #BABECC;
+    color: black;
 }
+
 
 
 
 #nameInput, #phoneInput, #emailInput, #noteInput {
     margin-right: 8px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 100%;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;
@@ -31,13 +31,17 @@
     -webkit-appearance: none;
     border-radius: 320px;
     padding: 16px;
-    background-color: #EBECF0;
+    background-color: white;
     border: 0;
     margin-bottom: 20px;
+    outline: none;
+
+    &:focus {
+        border-width: 0px;
+       } 
 }
 #dateInput {
     margin-right: 8px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 200px;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;
@@ -45,31 +49,44 @@
     -webkit-appearance: none;
     border-radius: 320px;
     padding: 16px;
-    background-color: #EBECF0;
+    background-color: white;
     border: 0;
     margin-bottom: 20px;
-    color: #BABECC;
+    outline: none;
 }
     #timeInput, #quantityInput {
     margin-right: 8px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    width: 100px;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;
     appearance: none;
     -webkit-appearance: none;
     border-radius: 320px;
     padding: 16px;
-    background-color: #EBECF0;
+    background-color: white;
     border: 0;
     margin-bottom: 20px;
-    color:#BABECC;
+    color:#757575;
+    outline: none;
 }
 
+
+.form-button {
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+    padding: 16px;
+    background-color:#009BAB;
+    color: white;
+    font-weight: 600;      
+}
 
 
 .date-time {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 37px;
 }
+
+button:disabled {
+    opacity: 0.5;
+  }

@@ -1,23 +1,31 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import './Bookings.css'
 
 
 function NewBookingForm() {
     const [name, setName] = useState("")
-    const [quantity, setQuantity] = useState("1")
+    const [quantity, setQuantity] = useState("")
     const [phone, setPhone] = useState("")
     const [email, setEmail] = useState("")
-    const [time, setTime] = useState("12:00")
+    const [time, setTime] = useState("")
     const [date, setDate] = useState("")
     const [note, setNote] = useState("")
     const [confirmed, setConfirmed] = useState(false)
+    const [isValid, setIsValid] = useState(false);
+
+    // This effect runs when 'data' changes
+    useEffect(() => {
+    // If there is data, the form is valid
+    setIsValid(quantity && time);
+    }, [quantity, time]);
 
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setConfirmed(false)
+
         const bookingData = { name, quantity, phone, email, confirmed, time, date, note }
 
         const response = await fetch(import.meta.env.VITE_API_KEY, {
@@ -38,7 +46,7 @@ function NewBookingForm() {
 
     return (
         <div className="form-container">
-           <h2>Create a new booking</h2>
+           <h2>Request a new booking</h2>
            <form onSubmit={handleSubmit}>
                 <input type="hidden" name="confirmed" value={confirmed} />
                 <div className="name">
@@ -49,7 +57,7 @@ function NewBookingForm() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        placeholder="Full Name"
+                        placeholder="Full Name*"
                         />
                 </div>
                 <div className="phone">
@@ -60,7 +68,7 @@ function NewBookingForm() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         required
-                        placeholder="Phone Number"
+                        placeholder="Phone Number*"
                         />
                 </div>
                 <div className="email">
@@ -71,7 +79,7 @@ function NewBookingForm() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        placeholder="Email Address"
+                        placeholder="Email Address*"
                         />
                 </div>
                 <div className="date-time">
@@ -83,18 +91,19 @@ function NewBookingForm() {
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                             required
-                            placeholder="Date(yyyy/mm/dd)"
+                            placeholder="Date(yyyy/mm/dd)*"
                             />
                     </div>
                     <div className="quantity">
                     {/* <label htmlFor="quantityInput">Number of people: </label> */}
                         <select 
                             id="quantityInput"
-                            value={quantity}
+                            value={quantity || "Number of people*"}
                             onChange={(e) => setQuantity(Number(e.target.value))}
                             required
                             
                         >
+                            <option disabled>Number of people*</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -106,17 +115,19 @@ function NewBookingForm() {
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
+                        {/* {!quantity && <p>Please select a number of people.</p>} */}
                 </div>
                     <div className="time">
                         {/* <label htmlFor="timeInput">Time: </label> */}
                             <select 
                                 type="text" 
                                 id="timeInput"
-                                value={time}
+                                value={time || "time"}
                                 onChange={(e) => setTime(e.target.value)}
                                 required
                                 
                             >
+                                <option value="time" disabled>Time*</option>
                                 <option value="12:00">12:00</option>
                                 <option value="12:30">12:30</option>
                                 <option value="13:00">13:00</option>
@@ -137,6 +148,7 @@ function NewBookingForm() {
                                 <option value="20:30">20:30</option>
                                 <option value="21:00">21:00</option>
                             </select>
+                            {/* {!time && <p>Please select a time.</p>} */}
                     </div>
                 </div>
                 <div className="note">
@@ -145,12 +157,11 @@ function NewBookingForm() {
                         id="noteInput"
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
-                        required
                         placeholder="Dietary Restrictions / Reservation Notes"
                         />
                 </div>
-                <div className="form-button">
-                    <button type="submit">Create a booking</button>
+                <div>
+                    <button className="form-button" type="submit" disabled={!isValid}>Create a booking</button>
                 </div>
            </form>
         </div>
