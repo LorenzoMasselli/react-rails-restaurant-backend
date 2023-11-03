@@ -64,11 +64,11 @@ function BookingEditForm() {
     if (!booking) return <h2>Loading...</h2>  
 
     return (
-        <div>
+        <div className='form-container'>
             <h2>Edit Booking</h2>
             <form onSubmit={handleSubmit}>
-                <div className="name">
-                    <label htmlFor="name-input">Full name: </label>
+                <div className="edit">
+                    <label htmlFor="name-input">Name: </label>
                     <input 
                         type="text" 
                         id="name-input"
@@ -76,7 +76,7 @@ function BookingEditForm() {
                         onChange={(e) => setBooking({...booking, name: e.target.value})}
                         />
                 </div>
-                <div className="phone">
+                <div className="edit">
                     <label htmlFor="phone-input">Phone: </label>
                     <input 
                         type="text" 
@@ -85,8 +85,8 @@ function BookingEditForm() {
                         onChange={(e) => setBooking({...booking, phone: e.target.value})}
                         />
                 </div>
-                <div className="email">
-                    <label htmlFor="email-input">Email: </label>
+                <div className="edit">
+                    <label htmlFor="email-input">Email:</label>
                     <input 
                         type="text" 
                         id="email-input"
@@ -94,9 +94,9 @@ function BookingEditForm() {
                         onChange={(e) => setBooking({...booking, email: e.target.value})}
                         />
                 </div>
-                <div className="date-time">
+                <div className="date-time-edit">
                     <div className="date">
-                        <label htmlFor="date-input">Date (format: yyyy/mm/dd): </label>
+                        <label htmlFor="date-input">Date (yyyy/mm/dd): </label>
                         <input 
                             type="text" 
                             id="date-input"
@@ -104,27 +104,7 @@ function BookingEditForm() {
                             onChange={(e) => setBooking({...booking, date: e.target.value})}
                             />
                     </div>
-                    <div className="quantity">
-                        <label htmlFor="quantity-input">Number of people: </label>
-                        <select 
-                            type="text"
-                            id="quantity-input"
-                            value={booking.quantity}
-                            onChange={(e) => setBooking({...booking, quantity: Number(e.target.value)})}                            
-                        >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    <div className="time">
+                    <div className="edit">
                         <label htmlFor="time-input">Time: </label>
                         <select 
                             type="text" 
@@ -154,26 +134,48 @@ function BookingEditForm() {
                         </select>
                     </div>
                 </div>
-                <div className="note">
-                    <label htmlFor="note-input">notes: </label>
+                <div className="date-time-edit">
+                    <div className="edit">
+                        <label htmlFor="confirmed-input">Booking confirmation: </label>
+                        <select 
+                            type="text"
+                            id="confirmed-input"
+                            value={booking.confirmed}
+                            onChange={(e) => setBooking({...booking, confirmed: e.target.value})}                            
+                        >
+                            <option value="false">False</option>
+                            <option value="true">True</option>
+                        </select>
+                    </div>
+                    <div className="edit">
+                        <label htmlFor="quantity-input">Number of people: </label>
+                        <select 
+                            type="text"
+                            id="quantity-input"
+                            value={booking.quantity}
+                            onChange={(e) => setBooking({...booking, quantity: Number(e.target.value)})}                            
+                        >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="edit">
+                    <label htmlFor="note-input">Notes: </label>
                     <textarea 
                         id="note-input"
                         value={booking.note}
                         onChange={(e) => setBooking({...booking, note: e.target.value})}
                         placeholder="Dietary Restrictions / Reservation Notes"
                         />
-                </div>
-                <div className="confirmed">
-                    <label htmlFor="confirmed-input">Confirmed(T/F): </label>
-                    <select 
-                        type="text"
-                        id="confirmed-input"
-                        value={booking.confirmed}
-                        onChange={(e) => setBooking({...booking, confirmed: e.target.value})}                            
-                    >
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
                 </div>
                 <div>
                     <button className="form-button" type="submit">Save your edit</button>

@@ -9,8 +9,6 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <h1>React on rails </h1>
-        <p>Find this application layout in frontend/src/App.jsx</p>
         <Navbar />
         <AppRoutes />
         {/* <BookingsList /> */}
