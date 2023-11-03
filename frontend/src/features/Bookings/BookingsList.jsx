@@ -44,16 +44,36 @@ function BookingsList() {
         }
         loadBookings();
       }, []);
+    
+    const deleteBooking = async (id) => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_KEY}/${id}`, {
+          method: "DELETE"
+        });
+        if (response.ok) {
+          setBookings(bookings.filter((booking) => booking.id !== id))
+        } else {
+          throw response
+        }
+      } catch(e) {
+        console.log(e)
+      }
+    } 
+
+
     return (
         <div className='booking-container'>
             {bookings.map((booking) => (
-                <Link to={`/bookings/${booking.id}`} key={booking.id} className='bookings-list'>
+                <div  key={booking.id} className='bookings-list'>
                     <div className="booking-activity" style={{position: 'relative'}}>
-                        <h3>{booking.name} ({booking.quantity})</h3>
+                        <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
                         <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '7px', right: '7px'}}/>
                     </div>
-                    <h4 className='booking-time'>{booking.date} | {booking.time}</h4>
-                </Link>
+                    <div>
+                      <h4 className='booking-time'>{booking.date} | {booking.time}</h4>
+                      <button onClick={() => deleteBooking(booking.id)}>Delete</button>
+                    </div>
+                </div>
             ))}
         </div>
     )

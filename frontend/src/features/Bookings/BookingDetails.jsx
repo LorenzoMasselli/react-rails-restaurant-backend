@@ -6,6 +6,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 function BookingDetails() {
     const [booking, setBooking] = useState(null)
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
     const { id } = useParams()
 
     useEffect(() => {
@@ -26,6 +27,21 @@ function BookingDetails() {
         fetchCurrentBooking()
     },[id])
 
+    const deleteBooking = async () => {
+        try {
+          const response = await fetch(`${import.meta.env.VITE_API_KEY}/${id}`, {
+            method: "DELETE"
+          });
+          if (response.ok) {
+            navigate("/")
+          } else {
+            throw response
+          }
+        } catch(e) {
+          console.log(e)
+        }
+      } 
+
     if (loading) return <h2>Loading...</h2>
     return (
         <div>
@@ -40,6 +56,8 @@ function BookingDetails() {
                 <h3>Instructions: {booking.note}</h3>
             </div>
             <Link to="/">Back to bookings</Link>
+            {" | "}
+            <button onClick={deleteBooking}>Delete</button>
         </div>
     )
 }
