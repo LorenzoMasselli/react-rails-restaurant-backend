@@ -65,15 +65,16 @@ function BookingsList() {
         <div className='booking-container'>
             {bookings.map((booking) => (
                 <div  key={booking.id} className='bookings-list'>
-                    <div className="booking-activity" style={{position: 'relative'}}>
+                    <div className="booking-activity">
                         <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
                         <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '7px', right: '7px'}}/>
                     </div>
-                    <div>
-                      <h4 className='booking-time'>{booking.date} | {booking.time}</h4>
-                      <button onClick={() => deleteBooking(booking.id)}>Delete</button>
+                      <h4 className='booking-time'>{booking.time}</h4>
+                      <div className='edit-delete'>
+                        <Link to={`/bookings/${booking.id}/edit`}><button>Edit</button></Link>
+                        <button onClick={() => deleteBooking(booking.id)}>Delete</button>
+                      </div>
                     </div>
-                </div>
             ))}
         </div>
     )

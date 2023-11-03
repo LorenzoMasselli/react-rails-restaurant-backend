@@ -9,7 +9,7 @@
     border: solid black;
     border-radius: 12px;
     width: 260px;
-    height: 140px;
+    height: 100%;
     color: black;
     margin: 10px;
     display: flex;
@@ -17,10 +17,8 @@
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10px;
-    /* padding-right: 10px; */
-}
-.bookings-list:hover {
-    color: black;
+    padding-bottom: 10px;
+    background-color: #D9D9D9;
 }
 
 .form-container {
@@ -94,11 +92,20 @@
     font-weight: 600;      
 }
 
+.form-button:hover {
+    border: 0px;
+}
+
 
 .date-time {
     display: flex;
     justify-content: space-between;
     gap: 37px;
+}
+
+.date-time-edit {
+    display: flex;
+    justify-content: space-between;
 }
 
 button:disabled {
@@ -110,28 +117,169 @@ button:disabled {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: relative;
+}
+
+.booking-activity a {
+    color: black;
+    font-weight: 700;
+}
+.booking-activity a:hover {
+    color: black;
 }
 
 .booking-activity h3 {
     margin-top: 30px;
     margin-bottom: 0px;
 }
+.booking-activity a {
+    margin-top: 10px;
+    color: black;
+    text-decoration: none;
+}
 
 .booking-time {
-    margin-top: 0px;
+    margin: 0px;
+    margin-bottom: 25px;
 }
 
 .booking-details-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 5px ;
-    padding: 5px;
+    width: 100%;
+}
+
+.booking-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: solid 1px black;
-    border-radius: 12px
+    border-radius: 12px;
+    margin: 25px ;
+    padding: 25px;
 }
 
 .booking-details-content h3 {
     max-width: 300px;
     margin: 40px;
+}
+
+.edit-delete {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.edit-delete button {
+    margin-right: 10px;
+    background-color:#009BAB;
+    color: white;
+    border-radius: 320px;
+}
+
+#name-input, #phone-input, #email-input, #date-input, #quantity-input, #time-input, #note-input, #confirmed-input {
+    margin-right: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: white;
+    border: 0;
+    margin-bottom: 20px;
+    outline: none;
+    color: black;
+
+    &:focus {
+        border-width: 0px;
+       } 
+}
+
+.edit {
+    display: flex;
+    white-space: nowrap;
+}
+
+.date {
+    display: flex;
+    white-space: nowrap;
+}
+
+#date-input {
+    width: 102px;
+}
+
+.date label {
+    margin-top: 12px;
+    margin-right: 8px;
+}
+
+.edit label {
+    margin-top: 12px;
+    margin-right: 8px;
+}
+
+.personal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+    height: 100%;
+    padding-left: 10px;
+    margin: 20px;
+    background-color: #D9D9D9;
+    border-radius: 12px;
+    padding-bottom: 15px;
+    color: black;
+
+}
+.personal-content h4{
+    margin: 0px;
+    text-align: left;
+}
+.personal-content h3{
+    margin-bottom: 15px;
+    text-align: left;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+.booking-details-instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+    padding-left: 10px;
+    margin: 20px;
+    background-color: #D9D9D9;
+    border-radius: 12px;
+    padding-bottom: 15px;
+    color: black;
+    height: 126px;
+
+}
+.booking-details h2 {
+    margin-top: 0px;
+}
+.booking-details-instructions h4{
+    margin: 0px;
+    text-align: left;
+}
+.booking-details-instructions h3{
+    margin-bottom: 15px;
+    text-align: left;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.details-buttons {
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+    padding: 16px;
+    background-color:#009BAB;
+    color: white;
+    font-weight: 600; 
+    margin-right: 20px;
 }
