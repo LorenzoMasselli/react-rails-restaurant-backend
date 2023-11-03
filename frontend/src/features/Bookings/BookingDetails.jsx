@@ -29,12 +29,16 @@ function BookingDetails() {
     if (loading) return <h2>Loading...</h2>
     return (
         <div>
-            <h2>1 {booking.name}</h2>
-            <h2>2 {booking.quantity} people</h2>
-            <h3>3 {booking.email}</h3>
-            <h3>4 {booking.phone}</h3>
-            <h3>5 Instruction: {booking.note}</h3>
-            <h3>6 time: {booking.time}</h3>
+            <div>Booking Details</div>
+            <div className='booking-details-content'>
+                <h3>Name: {booking.name}</h3>
+                <h3>Booking date: {booking.date}</h3>
+                <h3>Booking time: {booking.time}</h3>
+                <h3>Number of people: {booking.quantity} people</h3>
+                <h3>Email address: {booking.email}</h3>
+                <h3>Phone number: {booking.phone}</h3>
+                <h3>Instructions: {booking.note}</h3>
+            </div>
             <Link to="/">Back to bookings</Link>
         </div>
     )
