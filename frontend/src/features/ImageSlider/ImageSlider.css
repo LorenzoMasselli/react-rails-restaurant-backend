@@ -1,0 +1,22 @@
+.image-beach-house {
+    width: 600px;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.image-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.left-right-click {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,18 @@
+.homepage {
+    color: white;
+    display: flex;
+    
+}
+
+.left-homepage {
+    width: 50%;
+    text-align: left;
+}
+
+.right-homepage {
+    width: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
