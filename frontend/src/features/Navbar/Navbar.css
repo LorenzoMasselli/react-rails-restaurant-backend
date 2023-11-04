@@ -10,6 +10,12 @@
 .navbar-title {
     color: #009BAB;
     font-family: 'Potta One';
+    font-size: 30px;
+    margin-left: 40px;
+}
+
+.navbar-title:hover {
+    color: #009BAB;
 }
 
 .navbar div {

@@ -9,14 +9,8 @@ function Navbar() {
     
     return (
         <nav className='navbar'>
-            <div><h2 className='navbar-title'>The BeachHouse</h2></div>
+            <Link to="/" className='navbar-title'>The BeachHouse</Link>
             <div className='navbar-links'>
-                <div>
-                    <Link to="/" className='booking-link'>
-                        <FontAwesomeIcon icon={faHouse} size="2xl"/>
-                        <span>Homepage</span>
-                    </Link>
-                </div>
                 <div>
                     <Link to="/bookings" className='booking-link'>
                         <FontAwesomeIcon icon={faRectangleList} size="2xl"/>
