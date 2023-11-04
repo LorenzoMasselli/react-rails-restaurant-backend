@@ -31,6 +31,10 @@
     color: black;
 }
 
+.form-container input {
+    color: black;
+}
+
 
 
 
@@ -47,6 +51,7 @@
     border: 0;
     margin-bottom: 20px;
     outline: none;
+    color: black;
 
     &:focus {
         border-width: 0px;

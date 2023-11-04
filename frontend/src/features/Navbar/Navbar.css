@@ -6,6 +6,8 @@
     left: 0;
     width: 100%;
     align-items: center;
+    font-family: Poppins,sans-serif;
+    border-bottom: solid 3px #009BAB;
 }
 .navbar-title {
     color: #009BAB;
@@ -53,6 +55,7 @@
 .booking-link {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .booking-link svg:hover {

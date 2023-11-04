@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays, faHouse, faRectangleList } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faRectangleList } from '@fortawesome/free-solid-svg-icons'
 
 function Navbar() {
     
