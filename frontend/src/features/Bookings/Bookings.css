@@ -92,7 +92,7 @@
     outline: 0;
     border-radius: 320px;
     padding: 16px;
-    background-color:#009BAB;
+    background-color:#171C8F;
     color: white;
     font-weight: 600;      
 }
@@ -177,7 +177,7 @@ button:disabled {
 
 .edit-delete button {
     margin-right: 10px;
-    background-color:#009BAB;
+    background-color:#171C8F;
     color: white;
     border-radius: 320px;
 }
@@ -283,7 +283,7 @@ button:disabled {
     outline: 0;
     border-radius: 320px;
     padding: 16px;
-    background-color:#009BAB;
+    background-color:#171C8F;
     color: white;
     font-weight: 600; 
     margin-right: 20px;

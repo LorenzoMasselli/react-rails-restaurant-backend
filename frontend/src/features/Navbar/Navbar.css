@@ -7,17 +7,17 @@
     width: 100%;
     align-items: center;
     font-family: Poppins,sans-serif;
-    border-bottom: solid 3px #009BAB;
+    /* border-bottom: solid 3px #009BAB; */
 }
 .navbar-title {
-    color: #009BAB;
+    color: #171C8F;
     font-family: 'Potta One';
     font-size: 30px;
     margin-left: 40px;
 }
 
 .navbar-title:hover {
-    color: #009BAB;
+    color: #171C8F;
 }
 
 .navbar div {
@@ -54,6 +54,7 @@
 }
 .booking-link {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     margin-bottom: 10px;
 }
@@ -63,16 +64,17 @@
 }
 
 .booking-link svg {
-    color: #009BAB;
+    color: #171C8F;
+    width: 100%;
 }
 
 .booking-link span {
-    color: white;
+    /* color: white; */
     font-weight: 500;
 }
 
 
 body {
-    background-color: #0E1931;
+    background-color: white;
 }
 

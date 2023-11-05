@@ -64,10 +64,10 @@ function BookingsList() {
     return (
         <div className='booking-container'>
             {bookings.map((booking) => (
-                <div  key={booking.id} className='bookings-list'>
+                <div  key={booking.id} className='bookings-list'> 
                     <div className="booking-activity">
                         <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
-                        <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '7px', right: '7px'}}/>
+                        <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px'}}/>
                     </div>
                       <h4 className='booking-time'>{booking.time}</h4>
                       <div className='edit-delete'>

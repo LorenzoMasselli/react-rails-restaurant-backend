@@ -9,9 +9,12 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navbar />
-        <AppRoutes />
-        {/* <BookingsList /> */}
+        <div className="app-navbar">
+          <Navbar />
+        </div>
+        <div className="app-routes">
+          <AppRoutes />
+        </div>
       </div>
     </Router>
   )

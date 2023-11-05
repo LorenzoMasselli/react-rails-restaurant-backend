@@ -1,6 +1,10 @@
 .home {
     display: flex;
     flex-direction: column;
+    top: 15px;
+    position: fixed;
+    left: 0px;
+    margin: 75px;
 }
 .menu-home {
     display: flex;
@@ -9,35 +13,32 @@
 }
 
 .about {
-    color: white;
-    display: flex;
+    /* color: white; */
     font-family: Poppins,sans-serif;
     flex-wrap: wrap;
 }
 .events {
-    color: white;
-    display: flex;
+    /* color: white; */
     font-family: Poppins,sans-serif;
     width: 100%;
+    justify-content:space-between;
 }
 .events-left {
-    width: 70%;
+    width: 60%;
+    text-align: left;
 }
 .events-right {
-    /* writing-mode: vertical-rl;
-    text-orientation: mixed; */
-    /* border: solid 1px white; */
-    text-align: center;
+    text-align: right;
     width: 30%;
     margin: 30px;
+
 }
 .events h1 {
     text-decoration: underline;
 }
 
 .menu {
-    color: white;
-    display: flex;
+    /* color: white; */
     font-family: Poppins,sans-serif;
     flex-wrap: wrap;
     min-height: 501px;
@@ -69,8 +70,85 @@
 
 .event-activities {
     margin-bottom: 40px;
+     display: flex;
+   flex-direction: column;
+   gap: 1px;
 }
 
 .event-activities hr {
     margin-top: 40px;
+    width: 30%;
+    margin-right:0 ;
+}
+
+.event-activities svg {
+    width: 10%;    
+}
+.event-items {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: auto;
+}
+
+.about-sticker {
+    width: 100px;
+    height: 100px;
+    color: black;
+    position: absolute;
+    right: 3%;
+    bottom: 6%;
+    animation: rotate 8s infinite linear;
+}
+
+.about-link, .events-link, .menu-link {
+    color: #FF6A39;
+    font-weight: 500;
+}
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+svg {
+    fill: currentColor;
+    height: auto;
+    max-width: 66vmin;
+    transform-origin: center;
+    width: 66%;
+  }
+
+  .tripadvisor-logo {
+    width: 6rem;
+    background-color: #171C8F;
+    border-radius: 12px;
+  }
+  .tripadvisor {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border-radius: 12px;
+    padding: 4px;
+    justify-content: flex-end;
+}
+
+.contact-card a {
+    color: #171C8F;
+}
+.contact-card a:hover {
+    color: #171C8F;
+    text-decoration:#FF6A39 underline ;
 }
