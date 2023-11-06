@@ -1,13 +1,8 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     align-items: center;
     font-family: Poppins,sans-serif;
-    /* border-bottom: solid 3px #009BAB; */
 }
 .navbar-title {
     color: #171C8F;
@@ -34,6 +29,12 @@
     color: black;
     font-weight: 500;
     animation-delay: 50ms;
+}
+.navbar-links a:hover {
+    color: black;
+    font-weight: 500;
+    animation-delay: 50ms;
+    text-decoration:#FF6A39 underline ;
 }
 
 @keyframes shake {

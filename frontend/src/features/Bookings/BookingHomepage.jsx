@@ -1,10 +1,20 @@
+// eslint-disable-next-line no-unused-vars
+import React, {useState}  from 'react'
 import './BookingHomepage.css'
 import ImageSlider from '../ImageSlider/ImageSlider'
-import {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMicrophone, faMartiniGlass } from '@fortawesome/free-solid-svg-icons'
+// eslint-disable-next-line no-unused-vars
+import { faPhone, faMartiniGlass, faFutbol, faBurger } from '@fortawesome/free-solid-svg-icons'
 import BookNowButton from './BookNowButton.svg';
 import tripAdvisor from '../SliderImages/tripadvisor-choice-award.png'
+import MenuPdf from '../Menu/beach-house-menu.pdf'
+import Image1 from '../EventImages/event-image-1.jpg'
+import Image2 from '../EventImages/event-image-2.jpg'
+import Image3 from '../EventImages/event-image-1.jpg'
+import Image4 from '../EventImages/event-image-2.jpg'
+import Image5 from '../EventImages/event-image-1.jpg'
+import Image6 from '../EventImages/event-image-2.jpg'
+
 
 
 
@@ -15,7 +25,7 @@ function BookingHomepage() {
     function handleMenuItemClick(menuDiv) {
         setActiveMenuDiv(menuDiv);
       }
-    
+      const images = [Image1, Image2, Image3, Image4, Image5, Image6];
 
     return (
         <div className='home'>
@@ -23,28 +33,36 @@ function BookingHomepage() {
                 <img src={tripAdvisor} alt="Tripadvisor Choice Award 2023" className='tripadvisor-logo'/>
             </div>
             <div className='contact-card'>
-                <h3>Contact card</h3>
-                <a href='tel:2302632599' target='blank'>Call us: (230) 263 2599</a>
-                <a href='https://wa.me/23054886740' target='blank'>Whatsapp: (230) 5488 6740</a>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=-20.01557109059909,57.58057550851208" target='blank'>Directions</a>
+            <FontAwesomeIcon icon={faBurger} style={{color: "#ffffff",}} />
+                <div>
+                    <h3>Contact card</h3>
+                </div>
+                <div className='contact-directions'>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=-20.01557109059909,57.58057550851208" target='blank'>📍 Directions</a>
+                </div>
+                <div className='contact-numbers'>
+                    <div><a href='tel:2302632599' target='blank'>📞:(230)2632599</a></div>
+                    <div><a href='https://wa.me/23054886740' target='blank'>T:(230)54886740</a></div>   
+                </div>
 
             </div>
             <div className='menu-home'>
                 <h3>
-                    <a href="#" className='about-link' onClick={() => handleMenuItemClick('about')}>About</a>
+                    <a href="#" className={ `about-link ${activeMenuDiv === 'about' ? 'active' : '' }`} onClick={() => handleMenuItemClick('about')}>About</a>
                 </h3>
                 <h3>
-                    <a href="#" className='events-link' onClick={() => handleMenuItemClick('events')}>Events</a>
+                    <a href="#" className={ `events-link ${activeMenuDiv === 'events' ? 'active' : '' }`} onClick={() => handleMenuItemClick('events')}>Events</a>
                 </h3>
                 <h3>
-                    <a href="#" className='menu-link' onClick={() => handleMenuItemClick('menu')}>Menu</a>
+                    <a href={MenuPdf} className='menu-link' target='blank'>Menu</a>
                 </h3>
             </div>
             <div className="about" style={{ display: activeMenuDiv === 'about' ? 'flex' : 'none' }}>
                 <div className='left-about'>
-                    <h1>About</h1>
-                    <p>If you are looking for a place to mix a good time with exciting food in a relaxing local ambience, then the Beach House Restaurant is the place for you. Located along Royal Road in Grand Baie, we have a sports bar type atmosphere that is packed with locals and serves up meals for lunch as well as dinner. We have a huge menu of goodies that range from traditional hamburgers to octopus curry with aubergine to a chicken espetada which has a delightful flavour. </p>
-                    <p>There is also traditional sports bar fare from peri-peri Buffalo wings to pork riblets and tapas that include calamari a la romain, spicy meatballs as well as spicy chicken livers. The atmosphere really gets rolling here on game day and the beachside location is perfect for afternoon cocktails or listening to live music in the evenings. We are a very beautiful bar on the beach with awesome views over the lagoon of Grand Baie. Imagine sharing a chilled drink with your partner as the sun goes down! We are the perfect choice for a romantic night spot.</p>
+                    <h2>About</h2>
+                    <p className='left-about-content-header'>The Beach House aims to tantalize your taste buds and treat you to an unforgettable dining experience. Step into a stunning beachside setting with breathtaking views of the ocean and let yourself be enveloped by the delightful atmosphere.</p>
+                    <p>Embark on a culinary journey while taking in the breathtaking views of the ocean. Enjoy a leisurely lunch paired with refreshing cocktails and cold beer, or savor our rustic bar and grill favorites as the sun sets over the beach.</p>
+                    <p className="left-about-time">Opening times: Mon-Sun 12:00 - 22:00</p>
                 </div>
                 <div className='right-about'>
                     <ImageSlider/>
@@ -53,28 +71,27 @@ function BookingHomepage() {
             </div>
             <div className="events" style={{ display: activeMenuDiv === 'events' ? 'flex' : 'none' }}>
                 <div className='events-left'>
-                    <h1>Events</h1>
-                    <p>The Beach House is available for private events and celebrations, with a number of different options available. Group Dining: You are now able to book for up to 10 guests at the Beach House using the booking button above. Our diary opens 4 months in advance for groups and 3 months in advance for smaller tables. Kindly note, groups are seated in our upstairs dining room, alongside other guests.</p>
-                    <p>Private Events: the Beach House is available to hire for private events. Private hire of the room includes the use of the TV screen for streaming sports and movies. Our first floor can accommodate up to 14 seated guests for a Berenjak Feast, followed by the use of our pool table for post-food entertainment and up to 29 seated, excluding the use of the pool table. Contact us via the Events Enquiry button below to discuss in more detail.</p>
+                    <h2>Events</h2>
+                    <p>Whether youre looking to celebrate a special occasion, cheer on your favorite team, or enjoy a night of live music, The Beach House has you covered. With our stunning beachside setting and breathtaking views of the ocean, were the perfect place to host your next event or simply let loose and have some fun.</p>
                 </div>
                 <div className='events-right'>
-                    <div className='event-activities'>
-                        <FontAwesomeIcon icon={faMicrophone} size="xl" className='event-items'/>
-                        <h2 className='event-items'>Live Music & Sports</h2>
-                        <p className='event-items'>Listen to amazing artists and watch live sports</p>
-                        <hr className='event-items'/>
+                    <div className='a'>
+                        <div>
+                            <h3 className='a-header'>Events at the Beach House</h3>
+                            
+                            <p>The Beach House also hosts private parties, so you can celebrate your special occasion in style with your loved ones. You can also watch your favorite sports team play on our big screens, or join us for one of our many events throughout the year, such as Mauritian Independence Day and New Years Eve.</p>
+                            <p>*Please contact us if you would like to organize a private event</p>
+                            <p className="left-about-time">Opening times: Mon-Sun 12:00 - 22:00</p>
+                        </div>
                     </div>
-                    <div className='event-activities'>
-                        <FontAwesomeIcon icon={faMartiniGlass} size="xl" className='event-items'/>
-                        <h2 className='event-items'>Parties</h2>
-                        <p className='event-items'>Join us to celebrate big occassions such as New Years Eve</p>
-                        <hr className='event-items'/>
+                    <div className="image-scroller">
+                        <div className="image-container">
+                            {images.map((image, index) => (
+                                <img src={image} alt="" key={index} />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="menu" style={{ display: activeMenuDiv === 'menu' ? 'flex' : 'none' }}>
-                <h1>Menu</h1>
-                <p>We have a wide variety of food and drink options to choose from, so youre sure to find something to your taste. Be sure to try our signature dish, the chicken espetada!</p>
             </div>
         </div>
     )
