@@ -49,3 +49,8 @@ end
 
 
 gem "rails-controller-testing", "~> 1.0"
+
+gem 'devise'
+gem 'devise-jwt'
+# 'dotenv-rails' is for storing secret key in ENV file
+gem 'dotenv-rails', groups: [:development, :test]
