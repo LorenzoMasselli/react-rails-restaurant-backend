@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 Booking.destroy_all 
+User.destroy_all
 times = ["12:30", "13:00", "13:30", "18:30", "19:00", "19:30"]
 dates = ["2024/01/01", "2024/02/02", "2024/03/03", "2024/03/04"]
 
@@ -21,4 +22,26 @@ dates = ["2024/01/01", "2024/02/02", "2024/03/03", "2024/03/04"]
         note: "We have an instruction"
     )
 
+end
+
+1.times do 
+    User.create(
+        email: "user1@test.com",
+        password: "password",
+        admin: true
+    )
+end
+1.times do 
+    User.create(
+        email: "user2@test.com",
+        password: "password",
+        admin: false
+    )
+end
+1.times do 
+    User.create(
+        email: "user3@test.com",
+        password: "password",
+        admin: true
+    )
 end
