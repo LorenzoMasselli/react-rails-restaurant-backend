@@ -6,11 +6,10 @@ import BookingDetails from '../Bookings/BookingDetails'
 import NewBookingForm from '../Bookings/NewBookingForm'
 import BookingEditForm from '../Bookings/BookingEditForm';
 import BookingHomepage from '../Bookings/BookingHomepage'
-// import User from './components/User'
 import User from '../components/User'
 
-function AppRoutes() {
-    const [currUser, setCurrUser]=useState(null);
+function AppRoutes({currUser, setCurrUser}) {
+    
     return (
         <Routes>
             <Route path="/" element={<BookingHomepage />} /> 
