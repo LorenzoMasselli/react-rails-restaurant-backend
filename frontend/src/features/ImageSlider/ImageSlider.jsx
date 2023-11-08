@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import './ImageSlider.css'
+import FoodSticker from './food-sticker.svg';
 import beachHouse1 from '../SliderImages/beach-house-1.jpeg';
 import beachHouse2 from '../SliderImages/beach-house-2.jpeg';
 import beachHouse3 from '../SliderImages/beach-house-3.jpeg';
@@ -46,7 +47,9 @@ const ImageSlider = () => {
             <FontAwesomeIcon icon={faArrowLeftLong} size='xl' onClick={handleLeftClick}/>
             <FontAwesomeIcon icon={faArrowRightLong} size='xl' onClick={handleRightClick}/>
         </div>
-        <div style={{backgroundImage: `url(${activeSlide})`}} alt="Beach House Slider"  className='image-beach-house'/>
+        <div style={{backgroundImage: `url(${activeSlide})`}} alt="Beach House Slider"  className='image-beach-house'>
+          <img src={FoodSticker} alt="" className='about-sticker'/>
+        </div>
     </div>
   );
 };

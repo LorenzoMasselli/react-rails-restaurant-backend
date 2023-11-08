@@ -1,27 +1,35 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faRectangleList } from '@fortawesome/free-solid-svg-icons'
+import tripAdvisor from '../images/tripadvisor-choice-award.png'
 
-function Navbar() {
+function Navbar({currUser, setCurrUser}) {
+   
     
     return (
         <nav className='navbar'>
             <Link to="/" className='navbar-title'>The BeachHouse</Link>
+            <div className='tripadvisor'>
+                <img src={tripAdvisor} alt="Tripadvisor Choice Award 2023" className='tripadvisor-logo'/>
+            </div>
             <div className='navbar-links'>
                 <div>
-                    {/* if () */}
-                    <Link to="/bookings" className='booking-link'>
-                        <FontAwesomeIcon icon={faRectangleList} size="2xl"/>
-                        <span>All bookings</span>
-                    </Link>
+                    {currUser && currUser.admin ? (
+                        <>
+                            <Link to="/bookings" className='booking-link'>
+                                <FontAwesomeIcon icon={faRectangleList} size="2xl"/>
+                                <span>All bookings</span>
+                            </Link>
+                        </>
+                    ): null}
                 </div>
                 <div>
                     <Link to="/new" className='booking-link shake'>
                         <FontAwesomeIcon icon={faCalendarDays} size="2xl"/>
-                        <span>Book now</span>
+                        <span className='booking-link-text' >Book now</span>
                     </Link>
                 </div>
             </div>

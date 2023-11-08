@@ -4,12 +4,12 @@
     flex-direction: column;
     top: 15px;
     margin-top: 15px;
+    padding-top: 80px;
     left: 0px;
-    margin-left: 75px;
-    margin-right: 75px;
-    color: #201614;
-    width: 90%;
-    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: relative;
+
 }
 .menu-home {
     display: flex;
@@ -17,54 +17,132 @@
     gap: 20px;
 }
 
+/* ABOUT ////////////////////////////////////////////////////////////////////////// */
 .about {
     font-family: Poppins,sans-serif;
-    padding-left: 50px;
     gap: 70px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* width: 80vw; */
 }
+
+@media only screen and (min-width: 1124px)  {
+    .about-left-content {
+        width: 40%;
+        text-align: left;
+    }
+    .right-about {
+        width: 50%;
+        display: flex;
+        position: relative;
+    }
+    .events-left {
+        width: 40%;
+        text-align: left;
+        line-height: 50px;
+    }
+    .events-right {
+        text-align: left;
+        margin-top: 100px;
+        width: 45%;
+        margin-right: 40px;
+    }
+    .events {
+        gap: 100px;
+    }
+    .image-container {
+        animation: scroll 20s linear infinite;
+    }
+}
+@media only screen and (max-width: 1124px)  {
+    .about-left-content {
+        width: 100%;
+        text-align: left;
+    }
+    .right-about {
+        width: 100%;
+        display: flex;
+        position: relative;
+    }
+    .events-left {
+        width: 100%;
+        text-align: left;
+        line-height: 50px;
+    }
+    .events-right {
+        text-align: left;
+        width: 100%;
+        /* margin-right: 40px; */
+    }
+    .events {
+        gap: 10px;
+    }
+}
+
+
+.about-left-content h2 {
+    text-decoration: underline;
+    color: #FF6A39;
+}
+.about-left-content p {
+    font-weight: 100;
+}
+
+
+.about-link, .events-link, .menu-link {
+    box-shadow: inset 0 0 0 0 #FF6A39;
+    color: #FF6A39;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 12px;
+    transition: color .8s ease-in-out, box-shadow .4s ease-in-out;
+}
+.about-link:hover, .events-link:hover, .menu-link:hover {
+    box-shadow: inset 200px 0 0 0 #FF6A39;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.about-left-header {
+    color: #FF6A39;
+    text-align: left;
+    margin-bottom: 1px;
+}
+
+.about-left-content-header {
+    margin-left: 80px;
+    color: #171C8F;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.about-left-time {
+    color: #FF6A39;
+    margin-top: 0px;
+}
+
+
+/* EVENTS ///////////////////////////////////////////////////////////////////////// */
 .events {
     display: none;
-    gap: 100px;
+    justify-content: space-between;
+    flex-wrap: wrap;
     font-family: Poppins,sans-serif;
-    padding-left: 50px;
+    /* padding-left: 50px; */
 }
-.events-left {
-    width: 40%;
-    text-align: left;
-    line-height: 50px;
-}
+
 .events-left p{
     margin-left: 80px;
     color: #171C8F;
     font-size: 20px;
 }
 
-.events-right {
-    text-align: left;
-    margin-top: 100px;
-    width: 40%;
-}
+
 .events h2 {
     text-decoration: underline;
     color: #FF6A39;
-}
-
-.left-about {
-    width: 40%;
-    text-align: left;
-}
-
-.left-about h2 {
-    text-decoration: underline;
-    color: #FF6A39;
-}
-.left-about p {
-    font-weight: 100;
-}
-
-.right-about {
-    width: 50%;
-    display: flex;
 }
 
 .event-activities {
@@ -89,111 +167,6 @@
     margin-left: auto;
 }
 
-.about-sticker {
-    width: 100px;
-    height: 100px;
-    color: black;
-    position: absolute;
-    right: 3%;
-    bottom: 6%;
-    animation: rotate 8s infinite linear;
-}
-
-.about-link, .events-link, .menu-link {
-    box-shadow: inset 0 0 0 0 #FF6A39;
-    color: #FF6A39;
-    font-weight: 500;
-    padding: 5px;
-    border-radius: 12px;
-    transition: color .8s ease-in-out, box-shadow .4s ease-in-out;
-}
-.about-link:hover, .events-link:hover, .menu-link:hover {
-    box-shadow: inset 200px 0 0 0 #FF6A39;
-    color: white;
-    padding: 5px;
-    border-radius: 12px;
-}
-
-.active {
-    color: white;
-    padding: 5px;
-    border-radius: 12px;
-    box-shadow: inset 200px 0 0 0 #FF6A39;
-    body {
-        background: linear-gradient(to bottom, white 80%, orange 80%);
-    }
-}
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-  
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-svg {
-    fill: currentColor;
-    height: auto;
-    max-width: 66vmin;
-    transform-origin: center;
-    width: 66%;
-  }
-
-  .tripadvisor-logo {
-    width: 6rem;
-    background-color: #171C8F;
-    border-radius: 12px;
-  }
-  .tripadvisor {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .contact-card {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 10%;
-    right: 5%;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    border-radius: 12px;
-    padding: 14px;
-    justify-content: center;
-    align-items: center;
-    width:300px;
-    background-color: #171C8F;
-    color: white;
-    border: solid 2px #FF6A39;
-}
-
-.contact-card h3 {
-    margin-top: 20px;
-    margin-bottom: 0px
-}
-
-.contact-directions {
-    margin-bottom: 20px;
-}
-
-.contact-card a {
-    color: white;
-    display: flex;
-}
-.contact-card a:hover {
-    color: white;
-    text-decoration:#FF6A39 underline ;
-}
-
-.contact-numbers {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    width: 100%;
-}
-
 .event-design {
     display: flex;
     margin-top: 40px;
@@ -214,37 +187,90 @@ svg {
 }
 
 
-.a {
+.events-right-content {
     display: flex;
 }
 
-.b {
+.events-right-content-header {
+    color: #FF6A39;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////// */
+
+
+.active {
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: inset 200px 0 0 0 #FF6A39;
+    body {
+        background: linear-gradient(to bottom, white 80%, orange 80%);
+    }
+}
+  
+
+svg {
+    fill: currentColor;
+    height: auto;
+    max-width: 66vmin;
+    transform-origin: center;
+    width: 66%;
+  }
+
+  /* contact-cards //////////////////////////////////////////////////////////////////////////// */
+  @media only screen and (max-width: 1124px)  {
+    .contact-card {
+        display: none;
+    }
+}
+  @media only screen and (min-width: 1124px)  {
+    .contact-card {
+        display: flex;
+    }
+}
+
+  .contact-card {
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    right: 4%;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border-radius: 12px;
+    padding: 14px;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    /* background-color: #171C8F; */
+    color: black;
+    border: solid 2px #FF6A39;
+}
+
+.contact-card h3 {
+    margin-top: 20px;
+    margin-bottom: 0px
+}
+
+.contact-directions {
+    margin-bottom: 20px;
+}
+
+.contact-card a {
+    color: black;
+    display: flex;
+}
+.contact-card a:hover {
+    color: black;
+    text-decoration:#FF6A39 underline ;
+}
+
+.contact-numbers {
     display: flex;
     justify-content: space-between;
+    font-size: 12px;
     width: 100%;
 }
 
-.a-header {
-    color: #FF6A39;
-}
-
-.left-about-header {
-    color: #FF6A39;
-    text-align: left;
-    margin-bottom: 1px;
-}
-
-.left-about-content-header {
-    margin-left: 80px;
-    color: #171C8F;
-    font-size: 20px;
-    line-height: 40px;
-}
-
-.left-about-time {
-    color: #FF6A39;
-    margin-top: 0px;
-}
+/* Events image scroller /////////////////////////////////////////////////////////// */
 
 .image-scroller {
     overflow-x: auto;
@@ -252,20 +278,28 @@ svg {
     white-space: nowrap;
 }
 
-.image-container {
-    animation: scroll 20s linear infinite;
-}
+
 .image-container img {
     display: inline-block;
     height: 100px;
     margin-right: 20px;
 }
-
+/* ANIMATIONS //////////////////////////////////////////////////////////////// */
 @keyframes scroll {
     0% {
       transform: translateX(0px);
     }
     100% {
       transform: translateX(-500px);
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
     }
   }

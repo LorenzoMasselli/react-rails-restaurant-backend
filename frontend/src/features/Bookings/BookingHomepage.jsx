@@ -5,8 +5,6 @@ import ImageSlider from '../ImageSlider/ImageSlider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // eslint-disable-next-line no-unused-vars
 import { faPhone, faMartiniGlass, faFutbol, faBurger } from '@fortawesome/free-solid-svg-icons'
-import BookNowButton from './BookNowButton.svg';
-import tripAdvisor from '../SliderImages/tripadvisor-choice-award.png'
 import MenuPdf from '../Menu/beach-house-menu.pdf'
 import Image1 from '../EventImages/event-image-1.jpg'
 import Image2 from '../EventImages/event-image-2.jpg'
@@ -29,11 +27,8 @@ function BookingHomepage() {
 
     return (
         <div className='home'>
-            <div className='tripadvisor'>
-                <img src={tripAdvisor} alt="Tripadvisor Choice Award 2023" className='tripadvisor-logo'/>
-            </div>
             <div className='contact-card'>
-            <FontAwesomeIcon icon={faBurger} style={{color: "#ffffff",}} />
+            <FontAwesomeIcon icon={faBurger} style={{color: "#171C8F",}} />
                 <div>
                     <h3>Contact card</h3>
                 </div>
@@ -58,16 +53,16 @@ function BookingHomepage() {
                 </h3>
             </div>
             <div className="about" style={{ display: activeMenuDiv === 'about' ? 'flex' : 'none' }}>
-                <div className='left-about'>
+                <div className='about-left-content'>
                     <h2>About</h2>
-                    <p className='left-about-content-header'>The Beach House aims to tantalize your taste buds and treat you to an unforgettable dining experience. Step into a stunning beachside setting with breathtaking views of the ocean and let yourself be enveloped by the delightful atmosphere.</p>
+                    <p className='about-left-content-header'>The Beach House aims to tantalize your taste buds and treat you to an unforgettable dining experience. Step into a stunning beachside setting with breathtaking views of the ocean and let yourself be enveloped by the delightful atmosphere.</p>
                     <p>Embark on a culinary journey while taking in the breathtaking views of the ocean. Enjoy a leisurely lunch paired with refreshing cocktails and cold beer, or savor our rustic bar and grill favorites as the sun sets over the beach.</p>
-                    <p className="left-about-time">Opening times: Mon-Sun 12:00 - 22:00</p>
+                    <p className="about-left-time">Opening times: Mon-Sun 12:00 - 22:00</p>
                 </div>
                 <div className='right-about'>
                     <ImageSlider/>
+
                 </div>
-                <img src={BookNowButton} alt="" className='about-sticker'/>
             </div>
             <div className="events" style={{ display: activeMenuDiv === 'events' ? 'flex' : 'none' }}>
                 <div className='events-left'>
@@ -75,13 +70,13 @@ function BookingHomepage() {
                     <p>Whether youre looking to celebrate a special occasion, cheer on your favorite team, or enjoy a night of live music, The Beach House has you covered. With our stunning beachside setting and breathtaking views of the ocean, were the perfect place to host your next event or simply let loose and have some fun.</p>
                 </div>
                 <div className='events-right'>
-                    <div className='a'>
+                    <div className='events-right-content'>
                         <div>
-                            <h3 className='a-header'>Events at the Beach House</h3>
+                            <h3 className='events-right-content-header'>Events at the Beach House</h3>
                             
                             <p>The Beach House also hosts private parties, so you can celebrate your special occasion in style with your loved ones. You can also watch your favorite sports team play on our big screens, or join us for one of our many events throughout the year, such as Mauritian Independence Day and New Years Eve.</p>
                             <p>*Please contact us if you would like to organize a private event</p>
-                            <p className="left-about-time">Opening times: Mon-Sun 12:00 - 22:00</p>
+                            <p className="about-left-time">Opening times: Mon-Sun 12:00 - 22:00</p>
                         </div>
                     </div>
                     <div className="image-scroller">

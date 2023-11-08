@@ -3,16 +3,19 @@
     justify-content: space-between;
     align-items: center;
     font-family: Poppins,sans-serif;
+    background-color: #171C8F;
 }
 .navbar-title {
-    color: #171C8F;
+    color: white;
     font-family: 'Potta One';
     font-size: 30px;
     margin-left: 40px;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .navbar-title:hover {
-    color: #171C8F;
+    color: white;
 }
 
 .navbar div {
@@ -25,14 +28,17 @@
     margin-top: 15px;
 }
 
-.navbar-links a {
-    color: black;
-    font-weight: 500;
+.booking-link-text {
+    display: inline-block;
+    white-space: nowrap;
+    color: #FF6A39 ;
+    font-weight: 600;
     animation-delay: 50ms;
 }
-.navbar-links a:hover {
-    color: black;
-    font-weight: 500;
+
+.booking-link-text:hover {
+    color: white;
+    font-weight: 700;
     animation-delay: 50ms;
     text-decoration:#FF6A39 underline ;
 }
@@ -65,17 +71,19 @@
 }
 
 .booking-link svg {
-    color: #171C8F;
+    color: white;
     width: 100%;
 }
 
-.booking-link span {
-    /* color: white; */
-    font-weight: 500;
-}
 
 
-body {
-    background-color: white;
-}
-
+.tripadvisor-logo {
+    width: 4.5rem;
+    /* background-color: #171C8F; */
+    border-radius: 12px;
+  }
+  .tripadvisor {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
