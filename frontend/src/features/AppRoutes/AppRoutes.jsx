@@ -14,12 +14,15 @@ function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<BookingHomepage />} /> 
-            <Route path="/bookings" element={<BookingsList />} /> 
-            <Route path="/bookings/:id" element={<BookingDetails />} /> 
-            <Route path="/bookings/:id/edit" element={<BookingEditForm />} /> 
+            {currUser && currUser.admin ? (
+                <>
+                    <Route path="/bookings" element={<BookingsList />} /> 
+                    <Route path="/bookings/:id" element={<BookingDetails />} /> 
+                    <Route path="/bookings/:id/edit" element={<BookingEditForm />} /> 
+                </>
+            ): null}
             <Route path="/new" element={<NewBookingForm />} /> 
             <Route path="/admin" element={ <User currUser={currUser} setCurrUser={setCurrUser} />} /> 
-
         </Routes>
     )
 }

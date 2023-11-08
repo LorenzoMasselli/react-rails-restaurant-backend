@@ -12,6 +12,7 @@ function Navbar() {
             <Link to="/" className='navbar-title'>The BeachHouse</Link>
             <div className='navbar-links'>
                 <div>
+                    {/* if () */}
                     <Link to="/bookings" className='booking-link'>
                         <FontAwesomeIcon icon={faRectangleList} size="2xl"/>
                         <span>All bookings</span>
