@@ -1,8 +1,63 @@
 .booking-container {
    display: flex;
+   flex-direction: column;
    flex-wrap: wrap;
    justify-content: center;
-   margin-top: 80px;
+   align-items: flex-start;
+   margin-top: 40px;
+   padding-left: 80px;
+   position: relative;
+}
+.bookings-days {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+.booking-date-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.date-search {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 180px;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.booking-date-search-input {
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #171b8fcd;
+    border: 0;
+    margin-top: 0px;
+    outline: none;
+    color: white;
+    font-weight: ;
+
+    &:focus {
+        border-width: 0px;
+       } 
+}
+.booking-days-icon {
+    cursor: pointer;
+}
+
+.all-bookings {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .bookings-list {
@@ -30,7 +85,7 @@
     color: black;
 }
 
-.new-form {
+.align-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,14 +311,14 @@ button:disabled {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 250px;
+    min-width: 250px;
     padding-left: 10px;
     margin: 20px;
     background-color: #D9D9D9;
     border-radius: 12px;
     padding-bottom: 15px;
     color: black;
-    height: 126px;
+    /* height: 126px; */
 
 }
 .booking-details h2 {
