@@ -1,9 +1,12 @@
 import './Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faFacebook, } from '@fortawesome/free-brands-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import tripAdvisor from './tripadvisor.png'
+import { Link } from 'react-router-dom'
 
 function Footer() {
+    
 
     return (
         <footer className="footer">
@@ -13,6 +16,7 @@ function Footer() {
                     <a href='https://www.instagram.com/thebeachhousemu/' target='blank'><FontAwesomeIcon icon={faInstagram} style={{color: "#ffffff",}} alt="Instagram logo" /></a>
                     <a href='https://www.tripadvisor.com/Restaurant_Review-g488103-d1674515-Reviews-The_Beach_House_Restaurant_Beach_Bar-Grand_Baie.html' target='blank'><img src={tripAdvisor} alt="Tripadvisor logo" /></a>
                     <a href='https://www.facebook.com/thebeachhousemu/' target='blank'><FontAwesomeIcon icon={faFacebook} style={{color: "#ffffff",}} alt="Instagram logo"  /></a>
+                    <Link to="/admin"><FontAwesomeIcon icon={faUser} style={{color: "#ffffff", marginLeft: '15px'}} /></Link>
                 </div>
             </div>
             <div className='footer-right'>

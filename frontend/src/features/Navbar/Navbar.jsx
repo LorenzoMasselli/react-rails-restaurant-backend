@@ -21,7 +21,7 @@ function Navbar({currUser, setCurrUser}) {
                         <>
                             <Link to="/bookings" className='booking-link'>
                                 <FontAwesomeIcon icon={faRectangleList} size="2xl"/>
-                                <span>All bookings</span>
+                                <span className='booking-link-text'>All bookings</span>
                             </Link>
                         </>
                     ): null}

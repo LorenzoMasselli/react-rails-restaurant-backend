@@ -1,3 +1,5 @@
+import './Logout.css'
+
 const Logout =({setCurrUser})=>{
     const logout=async (setCurrUser)=>{
         try {
@@ -21,8 +23,8 @@ const Logout =({setCurrUser})=>{
          logout(setCurrUser)
     }
     return (
-        <div>
-            <input type="button" value='Logout' onClick={handleClick}/>
+        <div className='logout'>
+            <input type="button" value='Logout' onClick={handleClick} className='logout-button'/>
         </div>
     )
 }

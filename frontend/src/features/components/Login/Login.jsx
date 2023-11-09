@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import './Login.css'
 
 const Login = ({setCurrUser, setShow}) =>{
   const navigate = useNavigate()
@@ -39,15 +40,18 @@ const Login = ({setCurrUser, setShow}) =>{
   }
 
   return(
-    <div>
-      <form ref={formRef} onSubmit={handleSubmit}>
-        Email: <input type="email" name='email' placeholder="email" />
-        <br/>
-        Password: <input type="password" name='password' placeholder="password" />
-        <br/>
-        <input type='submit' value="Login" />
-      </form>
-      <br />
+    <div className="login-form">
+      <div className="login-form-container">
+        <h2 className="login-title">Admin Login</h2>
+        <form ref={formRef} onSubmit={handleSubmit}>
+          <input type="email" name='email' placeholder="email" className="login-input"/>
+          <br/>
+          <input type="password" name='password' placeholder="password" className="login-input"/>
+          <br/>
+          <input type='submit' value="Login"  className="login-button"/>
+        </form>
+        <br />
+      </div>
       {/* <div>Not registered yet, <a href="#signup" onClick={handleClick} >Signup</a> </div> */}
     </div>
   )
