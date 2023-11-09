@@ -4,12 +4,31 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Bookings.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCircle, faChevronDown, faChevronUp  } from '@fortawesome/free-solid-svg-icons'
 
+function filterBookingsByToday(bookings) {
+  const today = new Date().toISOString().slice(0, 10);
+  return bookings.filter((booking) => booking.date === today);
+}
+function filterBookingsByTomorrow(bookings) {
+  const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  return bookings.filter((booking) => booking.date === tomorrow);
+}
+
+function filterBookingsByDateSpecified(bookings, dateSpecified) {
+  const formattedDateSpecified = new Date(dateSpecified).toISOString().slice(0, 10);
+  return bookings.filter((booking) => booking.date === formattedDateSpecified);
+}
 function BookingsList() {
     const [bookings, setBookings] = useState([]);
     const [, setLoading] = useState(true);
     const [, setError] = useState(null)
+    const [todayIcon, setTodayIcon] = useState(faChevronUp)
+    const [tomorrowIcon, setTomorrowIcon] = useState(faChevronDown)
+    const [dateSpecifiedIcon, setDateSpecifiedIcon] = useState(faChevronUp)
+    const [dateSpecified, setDateSpecified] = useState(new Date());
+    const [dateInputted, setDateInputted] = useState(false);
+
     //  fetch bookings from API
     useEffect(() => {
         async function loadBookings() {
@@ -60,10 +79,57 @@ function BookingsList() {
       }
     } 
 
+    const toggleBookingTodayIcon = () => {
+      setTodayIcon((prevIcon) => {
+        if (prevIcon === faChevronDown) {
+          return faChevronUp
+        } else if (prevIcon === faChevronUp) {
+          return faChevronDown
+        }
+      })
+    };
+    const toggleBookingTomorrowIcon = () => {
+      setTomorrowIcon((prevIcon) => {
+        if (prevIcon === faChevronDown) {
+          return faChevronUp
+        } else if (prevIcon === faChevronUp) {
+          return faChevronDown
+        }
+      })
+    };
+    const toggleBookingDateSpecifiedIcon = () => {
+      setDateSpecifiedIcon((prevIcon) => {
+        if (prevIcon === faChevronDown) {
+          return faChevronUp
+        } else if (prevIcon === faChevronUp) {
+          return faChevronDown
+        }
+      })
+    };
+
+    const combinedHandleDateChange = (e) => {
+      setDateSpecified(e.target.value);
+      setDateInputted(true);
+    };
+
+    const todaysBookings = filterBookingsByToday(bookings);
+    const tomorrowBookings = filterBookingsByTomorrow(bookings);
+    const bookingsByDateSpecified = filterBookingsByDateSpecified(bookings, dateSpecified);
+
+    const convertDateToString = new Date(dateSpecified);
+
+    const formattedDate = convertDateToString.toLocaleDateString('en-US', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
 
     return (
-        <div className='booking-container'>
-            {bookings.map((booking) => (
+      <div className='booking-container'>
+          <h1>All bookings</h1>
+          <h2 className='bookings-days'>Today <FontAwesomeIcon icon={todayIcon} className='booking-days-icon' onClick={toggleBookingTodayIcon}/></h2>
+          <div className='all-bookings' style={{display: todayIcon === faChevronDown ? 'none' : 'flex'}}>
+            {todaysBookings.map((booking) => (
                 <div  key={booking.id} className='bookings-list'> 
                     <div className="booking-activity">
                         <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
@@ -76,8 +142,63 @@ function BookingsList() {
                       </div>
                     </div>
             ))}
-        </div>
-    )
+          </div>
+          <h2 className='bookings-days'>Tomorrow <FontAwesomeIcon icon={tomorrowIcon} className='booking-days-icon' onClick={toggleBookingTomorrowIcon}/></h2>
+          <div className='all-bookings' style={{display: tomorrowIcon === faChevronDown ? 'none' : 'flex'}}>
+            {tomorrowBookings.map((booking) => (
+                <div  key={booking.id} className='bookings-list'> 
+                    <div className="booking-activity">
+                        <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
+                        <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px'}}/>
+                    </div>
+                      <h4 className='booking-time'>{booking.time}</h4>
+                      <div className='edit-delete'>
+                        <Link to={`/bookings/${booking.id}/edit`}><button>Edit</button></Link>
+                        <button onClick={() => deleteBooking(booking.id)}>Delete</button>
+                      </div>
+                    </div>
+            ))}
+          </div>
+          <div className='date-search'>
+            <h4>Search Date: </h4>
+            <input type="date" value={dateSpecified} onChange={combinedHandleDateChange} className='booking-date-search-input'/>
+          </div>
+          {!dateInputted && (
+            <div className='no-bookings'>
+              <h2></h2>
+            </div>
+          )}
+          {dateInputted && bookingsByDateSpecified.length > 0 && (
+            <div className='booking-date-search'>
+                <h2 className='bookings-days'> Date: {formattedDate} <FontAwesomeIcon icon={dateSpecifiedIcon} className='booking-days-icon' onClick={toggleBookingDateSpecifiedIcon}/></h2>
+                  <div className='all-bookings' style={{display: dateSpecifiedIcon === faChevronDown ? 'none' : 'flex'}}>
+                    {bookingsByDateSpecified.map((booking) => (
+                      <div key={booking.id} className='bookings-list'> 
+                        <div className="booking-activity">
+                          <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
+                          <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px'}}/>
+                        </div>
+                        <h4 className='booking-time'>{booking.time}</h4>
+                        <div className='edit-delete'>
+                          <Link to={`/bookings/${booking.id}/edit`}><button>Edit</button></Link>
+                          <button onClick={() => deleteBooking(booking.id)}>Delete</button>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+            </div>
+          )}
+          {dateInputted && bookingsByDateSpecified.length === 0 && (
+            <div>
+                <div className='no-bookings'>
+                    <h2>No bookings for {formattedDate} </h2>
+                </div>
+            </div>
+          )}
+          
+      </div>
+  )
+
 
 }
 

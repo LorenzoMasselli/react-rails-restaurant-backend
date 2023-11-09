@@ -45,7 +45,7 @@ function NewBookingForm() {
     }
 
     return (
-        <div className="new-form">
+        <div className="align-form">
            <div className="form-container">
            <h2>Request a new booking</h2>
            <form onSubmit={handleSubmit}>
