@@ -13,7 +13,9 @@ function App() {
     <Router>
       <div className="app">
         <Navbar currUser={currUser} setCurrUser={setCurrUser}/>
-        <AppRoutes currUser={currUser} setCurrUser={setCurrUser}/>
+        <div className="app-body">
+          <AppRoutes currUser={currUser} setCurrUser={setCurrUser} />
+        </div>
         <Footer />
       </div>
     </Router>

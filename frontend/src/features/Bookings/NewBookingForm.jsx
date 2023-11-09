@@ -46,7 +46,7 @@ function NewBookingForm() {
 
     return (
         <div className="new-form">
-            <div className="form-container">
+           <div className="form-container">
            <h2>Request a new booking</h2>
            <form onSubmit={handleSubmit}>
                 <input type="hidden" name="confirmed" value={confirmed} />
