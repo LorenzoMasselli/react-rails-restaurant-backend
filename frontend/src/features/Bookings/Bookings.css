@@ -207,6 +207,7 @@ button:disabled {
 
 .booking-details-content {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -228,15 +229,42 @@ button:disabled {
 
 .edit-delete {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
 }
 
 .edit-delete button {
-    margin-right: 10px;
-    background-color:#171C8F;
-    color: white;
+    
+    /* background-color:#171C8F;
+    color: white; */
     border-radius: 320px;
+    height: 46px;
+    padding: 12px;
+}
+
+.delete-button {
+    background-color: rgba(216, 28, 28, 0.3);
+    color: white;
+    margin-right: 10px;
+    border-radius: 320px;
+}
+.delete-button:hover {
+    border: solid 1px rgb(182, 21, 21);
+    background-color: rgb(182, 21, 21);
+}
+.edit-button {
+    background-color: #171C8F;
+    color: white;
+}
+.confirm-button {
+    background-color: #171C8F;
+    color: white;
+    margin-right: 20px;
+}
+.confirm-button:hover {
+    background-color: rgb(14, 110, 14);
+    border: solid 1px rgb(14, 110, 14);
+    color: white;
 }
 
 #name-input, #phone-input, #email-input, #date-input, #quantity-input, #time-input, #note-input, #confirmed-input {
@@ -339,7 +367,7 @@ button:disabled {
     border: 0;
     outline: 0;
     border-radius: 320px;
-    padding: 16px;
+    padding: 10px;
     background-color:#171C8F;
     color: white;
     font-weight: 600; 

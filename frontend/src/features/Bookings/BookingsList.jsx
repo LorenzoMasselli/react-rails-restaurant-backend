@@ -1,10 +1,11 @@
 // API comes from .env.development file 
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, props } from 'react'
 import { Link } from 'react-router-dom'
 import './Bookings.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle, faChevronDown, faChevronUp  } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types';
 
 function filterBookingsByToday(bookings) {
   const today = new Date().toISOString().slice(0, 10);
@@ -18,6 +19,28 @@ function filterBookingsByTomorrow(bookings) {
 function filterBookingsByDateSpecified(bookings, dateSpecified) {
   const formattedDateSpecified = new Date(dateSpecified).toISOString().slice(0, 10);
   return bookings.filter((booking) => booking.date === formattedDateSpecified);
+}
+
+function BookingItem({ booking, confirmBooking, deleteBooking }) {
+  return (
+    <div key={booking.id} className='bookings-list'>
+      <div className="booking-activity">
+        <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
+        <FontAwesomeIcon
+          icon={faCircle}
+          style={{ color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px' }}
+        />
+      </div>
+      <h4 className='booking-time'>{booking.time}</h4>
+      <div className='edit-delete'>
+        <Link to={`/bookings/${booking.id}/edit`}><button className='edit-button'>Edit</button></Link>
+        {!booking.confirmed && (
+          <button className='confirm-button ' onClick={() => confirmBooking(booking)}>Confirm</button>
+        )}
+        <button className="delete-button" onClick={() => deleteBooking(booking.id)}>Delete</button>
+      </div>
+    </div>
+  );
 }
 function BookingsList() {
     const [bookings, setBookings] = useState([]);
@@ -63,7 +86,31 @@ function BookingsList() {
         }
         loadBookings();
       }, []);
-    
+      const confirmBooking = async (booking) => {
+        try {
+          const response = await fetch(`${import.meta.env.VITE_API_KEY}/${booking.id}`, {
+            method: "PUT",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                  confirmed: true,
+                })
+          });
+          if (response.ok) {
+            // this.forceUpdate()
+            setBookings((prevBookings) =>
+            prevBookings.map((prevBooking) =>
+              prevBooking.id === booking.id ? { ...prevBooking, confirmed: true } : prevBooking
+            ))
+          } else {
+            throw response
+          }
+        } catch(e) {
+          console.log(e)
+        }
+      } 
+
     const deleteBooking = async (id) => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_KEY}/${id}`, {
@@ -124,39 +171,21 @@ function BookingsList() {
       year: 'numeric',
     });
 
+    
+
     return (
       <div className='booking-container'>
           <h1>All bookings</h1>
           <h2 className='bookings-days'>Today <FontAwesomeIcon icon={todayIcon} className='booking-days-icon' onClick={toggleBookingTodayIcon}/></h2>
           <div className='all-bookings' style={{display: todayIcon === faChevronDown ? 'none' : 'flex'}}>
             {todaysBookings.map((booking) => (
-                <div  key={booking.id} className='bookings-list'> 
-                    <div className="booking-activity">
-                        <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
-                        <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px'}}/>
-                    </div>
-                      <h4 className='booking-time'>{booking.time}</h4>
-                      <div className='edit-delete'>
-                        <Link to={`/bookings/${booking.id}/edit`}><button>Edit</button></Link>
-                        <button onClick={() => deleteBooking(booking.id)}>Delete</button>
-                      </div>
-                    </div>
+              <BookingItem key={booking.id} booking={booking} confirmBooking={confirmBooking} deleteBooking={deleteBooking} />
             ))}
           </div>
           <h2 className='bookings-days'>Tomorrow <FontAwesomeIcon icon={tomorrowIcon} className='booking-days-icon' onClick={toggleBookingTomorrowIcon}/></h2>
           <div className='all-bookings' style={{display: tomorrowIcon === faChevronDown ? 'none' : 'flex'}}>
             {tomorrowBookings.map((booking) => (
-                <div  key={booking.id} className='bookings-list'> 
-                    <div className="booking-activity">
-                        <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
-                        <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px'}}/>
-                    </div>
-                      <h4 className='booking-time'>{booking.time}</h4>
-                      <div className='edit-delete'>
-                        <Link to={`/bookings/${booking.id}/edit`}><button>Edit</button></Link>
-                        <button onClick={() => deleteBooking(booking.id)}>Delete</button>
-                      </div>
-                    </div>
+              <BookingItem key={booking.id} booking={booking} confirmBooking={confirmBooking} deleteBooking={deleteBooking} />
             ))}
           </div>
           <div className='date-search'>
@@ -173,17 +202,7 @@ function BookingsList() {
                 <h2 className='bookings-days'> Date: {formattedDate} <FontAwesomeIcon icon={dateSpecifiedIcon} className='booking-days-icon' onClick={toggleBookingDateSpecifiedIcon}/></h2>
                   <div className='all-bookings' style={{display: dateSpecifiedIcon === faChevronDown ? 'none' : 'flex'}}>
                     {bookingsByDateSpecified.map((booking) => (
-                      <div key={booking.id} className='bookings-list'> 
-                        <div className="booking-activity">
-                          <Link to={`/bookings/${booking.id}`}>{booking.name} ({booking.quantity})</Link>
-                          <FontAwesomeIcon icon={faCircle} style={{color: booking.confirmed ? 'green' : 'red', position: 'absolute', top: '6px', left: '160px'}}/>
-                        </div>
-                        <h4 className='booking-time'>{booking.time}</h4>
-                        <div className='edit-delete'>
-                          <Link to={`/bookings/${booking.id}/edit`}><button>Edit</button></Link>
-                          <button onClick={() => deleteBooking(booking.id)}>Delete</button>
-                        </div>
-                      </div>
+                       <BookingItem key={booking.id} booking={booking} confirmBooking={confirmBooking} deleteBooking={deleteBooking} />
                     ))}
                 </div>
             </div>
@@ -198,8 +217,21 @@ function BookingsList() {
           
       </div>
   )
-
-
 }
 
+BookingItem.propTypes = {
+  booking: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    confirmed: PropTypes.bool.isRequired,
+    // Add other properties as needed
+  }).isRequired,
+  confirmBooking: PropTypes.func.isRequired,
+  deleteBooking: PropTypes.func.isRequired,
+};
+
 export default BookingsList
+

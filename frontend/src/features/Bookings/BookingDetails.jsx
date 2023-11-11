@@ -67,7 +67,7 @@ function BookingDetails() {
             <div>
                 <Link to="/bookings"><button className='details-buttons'>Back to bookings</button></Link>
                 <Link to={`/bookings/${booking.id}/edit`}><button className='details-buttons'>Edit booking</button></Link>
-                <button onClick={deleteBooking} className='details-buttons'>Delete</button>
+                <button onClick={deleteBooking} className='delete-button'>Delete</button>
             </div>
         </div>
     )
