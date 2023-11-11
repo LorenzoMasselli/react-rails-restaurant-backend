@@ -61,7 +61,7 @@ function BookingDetails() {
                 </div>
                 <div className="booking-details-instructions ">
                     <h3>Instructions:</h3>
-                    <h4>{booking.note}</h4>
+                    <p>{booking.note}</p>
                 </div>
             </div>
             <div>
