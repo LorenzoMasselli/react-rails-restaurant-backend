@@ -87,12 +87,11 @@ function NewBookingForm() {
                     <div className="date">
                         {/* <label htmlFor="dateInput">Date (format: yyyy/mm/dd): </label> */}
                         <input 
-                            type="text" 
+                            type="date" 
                             id="dateInput"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                             required
-                            placeholder="Date(yyyy/mm/dd)*"
                             />
                     </div>
                     <div className="quantity">

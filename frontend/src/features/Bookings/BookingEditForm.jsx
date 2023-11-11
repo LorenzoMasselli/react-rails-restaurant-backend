@@ -97,9 +97,9 @@ function BookingEditForm() {
                     </div>
                     <div className="date-time-edit">
                         <div className="date">
-                            <label htmlFor="date-input">Date (yyyy/mm/dd): </label>
+                            <label htmlFor="date-input">Date:</label>
                             <input 
-                                type="text" 
+                                type="date" 
                                 id="date-input"
                                 value={booking.date}
                                 onChange={(e) => setBooking({...booking, date: e.target.value})}

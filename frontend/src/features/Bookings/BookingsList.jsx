@@ -49,7 +49,7 @@ function BookingsList() {
     const [todayIcon, setTodayIcon] = useState(faChevronUp)
     const [tomorrowIcon, setTomorrowIcon] = useState(faChevronDown)
     const [dateSpecifiedIcon, setDateSpecifiedIcon] = useState(faChevronUp)
-    const [dateSpecified, setDateSpecified] = useState(new Date());
+    const [dateSpecified, setDateSpecified] = useState(new Date().toISOString().slice(0, 10));
     const [dateInputted, setDateInputted] = useState(false);
 
     //  fetch bookings from API
@@ -59,21 +59,15 @@ function BookingsList() {
             const response = await fetch(import.meta.env.VITE_API_KEY);
             if (response.ok) {
               const json = await response.json();
-              // Convert the string dates to the YYYY-MM-DD format
-              const sortedBookings = json.map((booking) => {
-                const date = booking.date.split("/").join("-");
-                booking.date = date;
-                return booking;
-              });
       
               // Sort the booking objects by date
-              sortedBookings.sort((a, b) => {
+              json.sort((a, b) => {
                 const dateA = new Date(a.date + " " + a.time);
                 const dateB = new Date(b.date + " " + b.time);
                 return dateA - dateB;
               });
       
-              setBookings(sortedBookings);
+              setBookings(json);
             } else {
               throw response;
             }
@@ -98,7 +92,6 @@ function BookingsList() {
                 })
           });
           if (response.ok) {
-            // this.forceUpdate()
             setBookings((prevBookings) =>
             prevBookings.map((prevBooking) =>
               prevBooking.id === booking.id ? { ...prevBooking, confirmed: true } : prevBooking
