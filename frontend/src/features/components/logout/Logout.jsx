@@ -3,7 +3,7 @@ import './Logout.css'
 const Logout =({setCurrUser})=>{
     const logout=async (setCurrUser)=>{
         try {
-            const response=await fetch("http://localhost:3000/logout",{
+            const response=await fetch(import.meta.env.VITE_LOGOUT_TEXT_KEY,{
                 method: "delete",
                 headers: {
                     "content-type": "application/json",

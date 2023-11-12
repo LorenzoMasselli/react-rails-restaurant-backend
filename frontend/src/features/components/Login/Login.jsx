@@ -6,9 +6,8 @@ const Login = ({setCurrUser, setShow}) =>{
   const navigate = useNavigate()
   const formRef = useRef()
   const login = async (userInfo, setCurrUser)=>{
-    const url = "http://localhost:3000/login"
     try{
-        const response = await fetch(url, {
+        const response = await fetch(import.meta.env.VITE_LOGIN_TEXT_KEY, {
             method: "post",
             headers: {
                 'content-type': 'application/json',

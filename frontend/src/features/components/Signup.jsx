@@ -2,9 +2,8 @@ import { useRef } from "react"
 const Signup=({setCurrUser, setShow})=>{
     const formRef = useRef()
     const signup=async (userInfo, setCurrUser)=>{
-        const url="http://localhost:3000/signup"
         try{
-            const response = await fetch(url, {
+            const response = await fetch(import.meta.env.VITE_SIGNUP_TEXT_KEY, {
                 method: 'post',
                 headers: {
                     "content-type": 'application/json',
