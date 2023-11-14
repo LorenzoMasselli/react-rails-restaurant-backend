@@ -7,7 +7,6 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # Where the request comes from
     origins "https://lorenzomasselli.github.io"
 
     resource "*",
