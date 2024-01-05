@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 858799bac4316b6936523d7b744a2113d54f4a3d
+  branch: main
+  specs:
+    faker (3.2.2)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -99,8 +107,6 @@ GEM
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
-    faker (3.2.2)
-      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -216,7 +222,7 @@ DEPENDENCIES
   devise
   devise-jwt
   dotenv-rails
-  faker
+  faker!
   pg
   puma (~> 5.0)
   rack-cors
