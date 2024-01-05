@@ -82,7 +82,7 @@ emails = [
 ]
 
 
-300.times do 
+1000.times do 
     Booking.create(
         name: names.sample,
         quantity: rand(1..9),
